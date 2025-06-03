@@ -1,0 +1,4 @@
+- @RestController annotation (which includes the @ResponseBody) and the presence of a json serializer (jackson)
+- When sending back the response use dto or objects and Always return the json 
+- Use the ResponseEntity<> and setup the standard API response
+- Create a standard responseclass using the generic
