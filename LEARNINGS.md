@@ -2,3 +2,8 @@
 - When sending back the response use dto or objects and Always return the json 
 - Use the ResponseEntity<> and setup the standard API response
 - Create a standard responseclass using the generic
+- Circular dependency
+  - Circular dependency occurs when Bean A depends on another Bean B, and the Bean B depends on Bean A. 
+  - Springboot throws a BeanCurrentIncreationExecption, and also can be avoided by using the @lazy
+- Logging mechanism learning resources -https://betterstack.com/community/guides/logging/java/logback/ 
+  - https://last9.io/blog/a-guide-to-spring-boot-logging/ reference for implementing the mdc and custom response
