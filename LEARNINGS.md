@@ -7,3 +7,7 @@
   - Springboot throws a BeanCurrentIncreationExecption, and also can be avoided by using the @lazy
 - Logging mechanism learning resources -https://betterstack.com/community/guides/logging/java/logback/ 
   - https://last9.io/blog/a-guide-to-spring-boot-logging/ reference for implementing the mdc and custom response
+
+## Aspect oriented programming
+- AOP is paradigm that lets us segegrate the cross-cutting concerns, such logging and transaction (research about this) from business logic
+- 
