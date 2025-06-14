@@ -33,3 +33,4 @@ build/
 .vscode/
 /TodoTask.md
 /app/
+/logFile.*.log

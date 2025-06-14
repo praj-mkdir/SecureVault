@@ -1,0 +1,126 @@
+23:43:32.351 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Starting SecureVaultApplication using Java 20.0.2 with PID 4576 (C:\Users\prajwal\Desktop\secureVault\secureVault\target\classes started by prajwal in C:\Users\prajwal\Desktop\secureVault\secureVault)
+23:43:32.351 [restartedMain] DEBUG com.praj.secureVault.SecureVaultApplication -- Running with Spring Boot v3.5.0, Spring v6.2.7
+23:43:32.351 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- The following 1 profile is active: "dev"
+23:43:32.418 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+23:43:32.418 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+23:43:33.690 [restartedMain] INFO  o.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port 8081 (http)
+23:43:33.706 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8081"]
+23:43:33.721 [restartedMain] INFO  org.apache.catalina.core.StandardService -- Starting service [Tomcat]
+23:43:33.721 [restartedMain] INFO  org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/10.1.41]
+23:43:33.784 [restartedMain] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
+23:43:33.784 [restartedMain] INFO  o.s.b.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 1366 ms
+23:43:34.409 [restartedMain] INFO  o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer -- LiveReload server is running on port 35729
+23:43:34.425 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol -- Starting ProtocolHandler ["http-nio-8081"]
+23:43:34.440 [restartedMain] INFO  o.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat started on port 8081 (http) with context path '/'
+23:43:34.456 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Started SecureVaultApplication in 2.644 seconds (process running for 3.357)
+23:43:49.230 [http-nio-8081-exec-1] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:43:49.230 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -- Initializing Servlet 'dispatcherServlet'
+23:43:49.230 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -- Completed initialization in 0 ms
+23:45:22.064 [SpringApplicationShutdownHook] INFO  o.springframework.boot.web.embedded.tomcat.GracefulShutdown -- Commencing graceful shutdown. Waiting for active requests to complete
+23:45:22.111 [tomcat-shutdown] INFO  o.springframework.boot.web.embedded.tomcat.GracefulShutdown -- Graceful shutdown complete
+23:45:36.376 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Starting SecureVaultApplication using Java 22.0.2 with PID 12844 (C:\Users\prajwal\Desktop\secureVault\secureVault\target\classes started by prajwal in C:\Users\prajwal\Desktop\secureVault\secureVault)
+23:45:36.376 [restartedMain] DEBUG com.praj.secureVault.SecureVaultApplication -- Running with Spring Boot v3.5.0, Spring v6.2.7
+23:45:36.376 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- The following 1 profile is active: "dev"
+23:45:36.461 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+23:45:37.227 [restartedMain] WARN  o.s.context.annotation.AnnotationConfigApplicationContext -- Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Error processing condition on org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration.propertySourcesPlaceholderConfigurer
+23:45:37.243 [restartedMain] INFO  o.s.b.autoconfigure.logging.ConditionEvaluationReportLogger -- 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+23:45:37.277 [restartedMain] ERROR org.springframework.boot.SpringApplication -- Application run failed
+java.lang.IllegalStateException: Error processing condition on org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration.propertySourcesPlaceholderConfigurer
+	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:60)
+	at org.springframework.context.annotation.ConditionEvaluator.shouldSkip(ConditionEvaluator.java:99)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForBeanMethod(ConfigurationClassBeanDefinitionReader.java:184)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:145)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:121)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:430)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
+	at com.praj.secureVault.SecureVaultApplication.main(SecureVaultApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@76ed5528]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:360)
+	at org.springframework.util.ReflectionUtils.getUniqueDeclaredMethods(ReflectionUtils.java:417)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.lambda$getTypeForFactoryMethod$1(AbstractAutowireCapableBeanFactory.java:757)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1710)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getTypeForFactoryMethod(AbstractAutowireCapableBeanFactory.java:756)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineTargetType(AbstractAutowireCapableBeanFactory.java:689)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:660)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1716)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:639)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:611)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:596)
+	at org.springframework.boot.autoconfigure.condition.OnBeanCondition.collectBeanDefinitionsForType(OnBeanCondition.java:322)
+	at org.springframework.boot.autoconfigure.condition.OnBeanCondition.getBeanDefinitionsForType(OnBeanCondition.java:314)
+	at org.springframework.boot.autoconfigure.condition.OnBeanCondition.getMatchingBeans(OnBeanCondition.java:214)
+	at org.springframework.boot.autoconfigure.condition.OnBeanCondition.evaluateConditionalOnMissingBean(OnBeanCondition.java:197)
+	at org.springframework.boot.autoconfigure.condition.OnBeanCondition.getMatchOutcome(OnBeanCondition.java:144)
+	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:47)
+	... 19 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: jakarta/servlet/Filter
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2686)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 36 common frames omitted
+Caused by: java.lang.ClassNotFoundException: jakarta.servlet.Filter
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 40 common frames omitted
+23:45:50.791 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Starting SecureVaultApplication using Java 20.0.2 with PID 564 (C:\Users\prajwal\Desktop\secureVault\secureVault\target\classes started by prajwal in C:\Users\prajwal\Desktop\secureVault\secureVault)
+23:45:50.791 [restartedMain] DEBUG com.praj.secureVault.SecureVaultApplication -- Running with Spring Boot v3.5.0, Spring v6.2.7
+23:45:50.791 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- The following 1 profile is active: "dev"
+23:45:50.835 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+23:45:50.835 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+23:45:51.978 [restartedMain] INFO  o.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port 8081 (http)
+23:45:51.993 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8081"]
+23:45:51.993 [restartedMain] INFO  org.apache.catalina.core.StandardService -- Starting service [Tomcat]
+23:45:51.993 [restartedMain] INFO  org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/10.1.41]
+23:45:52.040 [restartedMain] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
+23:45:52.040 [restartedMain] INFO  o.s.b.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 1205 ms
+23:45:52.600 [restartedMain] INFO  o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer -- LiveReload server is running on port 35729
+23:45:52.615 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol -- Starting ProtocolHandler ["http-nio-8081"]
+23:45:52.631 [restartedMain] INFO  o.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat started on port 8081 (http) with context path '/'
+23:45:52.646 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Started SecureVaultApplication in 2.308 seconds (process running for 2.913)
+23:45:58.170 [http-nio-8081-exec-1] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:45:58.170 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -- Initializing Servlet 'dispatcherServlet'
+23:45:58.187 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -- Completed initialization in 2 ms
+23:49:37.494 [SpringApplicationShutdownHook] INFO  o.springframework.boot.web.embedded.tomcat.GracefulShutdown -- Commencing graceful shutdown. Waiting for active requests to complete
+23:49:37.556 [tomcat-shutdown] INFO  o.springframework.boot.web.embedded.tomcat.GracefulShutdown -- Graceful shutdown complete
+23:49:47.610 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Starting SecureVaultApplication using Java 20.0.2 with PID 15272 (C:\Users\prajwal\Desktop\secureVault\secureVault\target\classes started by prajwal in C:\Users\prajwal\Desktop\secureVault\secureVault)
+23:49:47.610 [restartedMain] DEBUG com.praj.secureVault.SecureVaultApplication -- Running with Spring Boot v3.5.0, Spring v6.2.7
+23:49:47.610 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- The following 1 profile is active: "dev"
+23:49:47.662 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+23:49:47.662 [restartedMain] INFO  o.s.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor -- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+23:49:48.816 [restartedMain] INFO  o.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat initialized with port 8081 (http)
+23:49:48.832 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol -- Initializing ProtocolHandler ["http-nio-8081"]
+23:49:48.832 [restartedMain] INFO  org.apache.catalina.core.StandardService -- Starting service [Tomcat]
+23:49:48.832 [restartedMain] INFO  org.apache.catalina.core.StandardEngine -- Starting Servlet engine: [Apache Tomcat/10.1.41]
+23:49:48.879 [restartedMain] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring embedded WebApplicationContext
+23:49:48.879 [restartedMain] INFO  o.s.b.web.servlet.context.ServletWebServerApplicationContext -- Root WebApplicationContext: initialization completed in 1217 ms
+23:49:48.926 [restartedMain] DEBUG c.p.s.config.security.filters.RequestResponseFIlter -- Filter 'requestResponseFIlter' configured for use
+23:49:49.434 [restartedMain] INFO  o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer -- LiveReload server is running on port 35729
+23:49:49.449 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol -- Starting ProtocolHandler ["http-nio-8081"]
+23:49:49.465 [restartedMain] INFO  o.springframework.boot.web.embedded.tomcat.TomcatWebServer -- Tomcat started on port 8081 (http) with context path '/'
+23:49:49.480 [restartedMain] INFO  com.praj.secureVault.SecureVaultApplication -- Started SecureVaultApplication in 2.35 seconds (process running for 2.955)
+23:49:58.803 [http-nio-8081-exec-1] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:49:58.803 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -- Initializing Servlet 'dispatcherServlet'
+23:49:58.804 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -- Completed initialization in 1 ms
+23:49:58.900 [http-nio-8081-exec-1] INFO  c.p.s.config.security.filters.RequestResponseFIlter -- Method: GET, URI: /api/public/health
+23:49:58.900 [http-nio-8081-exec-1] INFO  c.p.s.config.security.filters.RequestResponseFIlter -- Request URI: /api/public/health, Body: 
+23:49:58.900 [http-nio-8081-exec-1] INFO  c.p.s.config.security.filters.RequestResponseFIlter -- Response Status: 200
+23:49:58.900 [http-nio-8081-exec-1] INFO  c.p.s.config.security.filters.RequestResponseFIlter -- Response Status: 200, Body: {"status":"success","data":{"status":"up","service":"Api service"},"message":"Service is healthy","timeStamp":"2025-06-14T18:19:58.850831700Z"}
+23:50:08.382 [SpringApplicationShutdownHook] INFO  o.springframework.boot.web.embedded.tomcat.GracefulShutdown -- Commencing graceful shutdown. Waiting for active requests to complete
+23:50:08.438 [tomcat-shutdown] INFO  o.springframework.boot.web.embedded.tomcat.GracefulShutdown -- Graceful shutdown complete
