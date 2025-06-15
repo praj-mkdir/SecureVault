@@ -7,7 +7,7 @@
 
     <appender name="STDOUT" class="ConsoleAppender">
         <encoder class="PatternLayoutEncoder">
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %logger{60} -- %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{60} -- [%X{traceId}] -- %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -23,7 +23,7 @@
             <totalSizeCap>3GB</totalSizeCap>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{60} -- %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{60} -- [%X{traceId}] -- %msg%n</pattern>
         </encoder>
 
 

@@ -33,7 +33,6 @@ public class RequestResponseFIlter extends OncePerRequestFilter {
             //todo (prod)-> Change this funcitonality, write code for, only logging the metadata for prod
             log.info("Request URI: {}, Body: {}", request.getRequestURI(),
                     new String(wrappedRequest.getContentAsByteArray(), request.getCharacterEncoding()));
-
             log.info("Response Status: {}", wrappedResponse.getStatus());
             // Log response todo --> dont log in the prod profile. only metadata
             log.info("Response Status: {}, Body: {}", response.getStatus(),
