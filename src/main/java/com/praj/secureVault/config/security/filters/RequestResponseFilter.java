@@ -6,17 +6,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @Component
-public class RequestResponseFIlter extends OncePerRequestFilter {
+public class RequestResponseFilter extends OncePerRequestFilter {
+
+    @Value("${spring.profiles.active:}")
+    private String activeProfile;
+
     private static final Logger log
-            = LoggerFactory.getLogger(RequestResponseFIlter.class);
+            = LoggerFactory.getLogger(RequestResponseFilter.class);
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -31,12 +37,17 @@ public class RequestResponseFIlter extends OncePerRequestFilter {
 
             // Log request
             //todo (prod)-> Change this funcitonality, write code for, only logging the metadata for prod
-            log.info("Request URI: {}, Body: {}", request.getRequestURI(),
-                    new String(wrappedRequest.getContentAsByteArray(), request.getCharacterEncoding()));
+            if ("dev".equalsIgnoreCase(activeProfile)) {
+                String requestBody = getRequestBody(wrappedRequest);
+                String responseBody = getResponseBody(wrappedResponse);
+
+                log.info("Request Body: {}", requestBody);
+                log.info("Response Body: {}", responseBody);
+            }
+
+
             log.info("Response Status: {}", wrappedResponse.getStatus());
-            // Log response todo --> dont log in the prod profile. only metadata
-            log.info("Response Status: {}, Body: {}", response.getStatus(),
-                    new String(wrappedResponse.getContentAsByteArray(), response.getCharacterEncoding()));
+
 
 
             wrappedResponse.copyBodyToResponse();
@@ -44,4 +55,25 @@ public class RequestResponseFIlter extends OncePerRequestFilter {
 
         }
     }
+
+    private String getRequestBody(ContentCachingRequestWrapper request) {
+        byte[] buf = request.getContentAsByteArray();
+        if (buf.length == 0) return "[empty]";
+        try {
+            return new String(buf, request.getCharacterEncoding());
+        } catch (UnsupportedEncodingException ex) {
+            return "[unknown encoding]";
+        }
+    }
+
+    private String getResponseBody(ContentCachingResponseWrapper response) {
+        byte[] buf = response.getContentAsByteArray();
+        if (buf.length == 0) return "[empty]";
+        try {
+            return new String(buf, response.getCharacterEncoding());
+        } catch (UnsupportedEncodingException ex) {
+            return "[unknown encoding]";
+        }
+    }
+
 }
