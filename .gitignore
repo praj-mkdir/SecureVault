@@ -31,7 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
-/TodoTask.md
+/docs/TodoTask.md
 /app/
 /logFile.*.log
 /app/
