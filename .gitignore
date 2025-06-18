@@ -13,6 +13,9 @@ app/**
 .springBeans
 .sts4-cache
 
+application-dev.yml
+application-prod.yml
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
