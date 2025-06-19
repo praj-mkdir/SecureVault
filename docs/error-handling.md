@@ -1,6 +1,6 @@
 # Error Handling in SecureVault
 
-## All exceptions in the backend are handled through a global `@RestControllerAdvice`, and return a structured response object (`ApiErrorResponse`) with traceability via `traceId`.
+## All  in the backend are handled through a global `@RestControllerAdvice`, and return a structured response object (`ApiErrorResponse`) with traceability via `traceId`.
 
 
 ### ApiErrorResponse Structure
