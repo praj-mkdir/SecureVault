@@ -1,8 +1,5 @@
-package com.praj.secureVault.config.security;
+package com.praj.secureVault.config;
 
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -33,10 +30,11 @@ public class SecurityConfig {
 
 
 
+    /// also create the Securityfilterchain based on the profile , one for production and one for dev
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtConverter jwtConverter) throws  Exception{
         http.authorizeHttpRequests((auth)->
-                auth.requestMatchers(HttpMethod.GET, "/api/public/**").permitAll()
+                auth.requestMatchers(HttpMethod.GET, "/api/public/**", "/docs/**").permitAll()
                         .anyRequest().authenticated()
 
         )
