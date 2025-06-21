@@ -1,7 +1,7 @@
-package com.praj.secureVault.health.controller;
+package com.praj.secureVault.controller;
 
 
-import com.praj.secureVault.health.dto.HealthDto;
+import com.praj.secureVault.dto.HealthDto;
 import com.praj.secureVault.util.response.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

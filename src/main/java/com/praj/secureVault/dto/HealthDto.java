@@ -1,4 +1,4 @@
-package com.praj.secureVault.health.dto;
+package com.praj.secureVault.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

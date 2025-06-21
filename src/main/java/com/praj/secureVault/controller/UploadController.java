@@ -1,6 +1,6 @@
-package com.praj.secureVault.fileupload;
+package com.praj.secureVault.controller;
 
-import com.praj.secureVault.health.dto.HealthDto;
+import com.praj.secureVault.dto.HealthDto;
 import com.praj.secureVault.util.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
