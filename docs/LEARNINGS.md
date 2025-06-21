@@ -25,6 +25,13 @@
 - Note: In java/Spring, we cannot modify the original request headers, meaning they are immutable.
 - That why we set the mdc and all. For debugging all we return the response with traceId 
 
+## Swagger And Documentation
+- OpenAPI Specification - It defines a standardized format for describing the API's comprehensively
+- Swagger - tool used to implement the OpenAPI specification 
+  - It is open source framework used for desigining, building, documenting and consuming RESTful API's,
+  - It provides standardized way of describe the structure of an API, make it easier understand and integrate
+  - (SpringFox) --It is java library integrate the swagger with springboot application, it automatically generates documentation from spring controllers and models
+  - Springdoc OpenAPI is an alternative to springfox, it is desgined to generate API documentation from springboot applications using the OpenAPI 3 spec
 
 
 ## Aspect oriented programming
