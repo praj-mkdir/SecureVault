@@ -8,6 +8,13 @@
 - Logging mechanism learning resources -https://betterstack.com/community/guides/logging/java/logback/ 
   - https://last9.io/blog/a-guide-to-spring-boot-logging/ reference for implementing the mdc and custom response
 
+### Spring security 
+- I had defined exception handler for accessdenied and Invalid jwt or unauthenticated request, in global exception handler
+- but i was able to catch the accessdeined but not the authenticationexception was caught, 
+- Root Cause: When jwt is invalid, expired or malformed, Spring security throws AuthenticationExectpion inside the filter chain
+- and handles it internally via AuthenticationEntryPoint-> It allows you to control the response to authenticated requests in way that make sense for app.
+- hen a request comes in that requires authentication but no user is logged in, Spring Security needs to decide what to do. This decision-making process is the job of the AuthenticationEntryPoint.
+
 
 ### Learning about design Pattern
 
