@@ -18,7 +18,6 @@ public class HealthController {
     @GetMapping("/health")
     @Operation(summary = "Get the health status of the application", description = "Returns if the service is healthy")
     public ResponseEntity<ApiResponse<HealthDto>> checkHealth(){
-
         HealthDto dto = new HealthDto("up","Api service");
         ApiResponse<HealthDto> response = ApiResponse.success(dto,"Service is healthy");
         return ResponseEntity.ok(response);

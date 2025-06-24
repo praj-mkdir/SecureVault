@@ -1,25 +1,64 @@
 package com.praj.secureVault.exception;
 
 import com.praj.secureVault.util.response.ApiErrorResponse;
+import com.praj.secureVault.util.response.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     private static  final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    String traceId  = MDC.get("traceId");
 
     @ExceptionHandler(FileStorageException.class)
     public ResponseEntity<ApiErrorResponse> handleFileStorageException(FileStorageException ex, HttpServletRequest request){
         return buildErrorResponse(ex,request,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
+    //File emtpy exception
+    @ExceptionHandler(FileEmptyException.class)
+    public  ResponseEntity<ApiErrorResponse> handleFileEmtpyExcption(FileEmptyException ex, HttpServletRequest request){
+        return buildErrorResponse(ex,request, HttpStatus.BAD_REQUEST);
+    }
+
+
+    //Authentication Exception and Inalid JWT
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ApiErrorResponse> handlAuthenticationExecption(AuthenticationException ex, HttpServletRequest request){
+        return buildErrorResponse(ex,request,HttpStatus.UNAUTHORIZED);
+    }
+
+    //AccessDenied Exception
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ApiErrorResponse> handleAccessDeniedException(AccessDeniedException ex, HttpServletRequest request){
+        return buildErrorResponse(ex,request,HttpStatus.FORBIDDEN);
+    }
+
+
+    //Catch general Exception  as fallback
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiErrorResponse> handleUnhandledExceptions(
+            Exception ex, HttpServletRequest request) {
+
+        log.error("Error [{}]: {} at {}", traceId, ex.getMessage(), request.getRequestURI());
+
+        return buildErrorResponse(
+                new RuntimeException("Something went wrong. Please contact support."),
+                request,
+                HttpStatus.INTERNAL_SERVER_ERROR
+        );
     }
 
     //Builder function for APIERROR
@@ -34,7 +73,7 @@ public class GlobalExceptionHandler {
                 .traceId(traceId)
                 .path(request.getRequestURI())
                 .build();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+        return ResponseEntity.status(status).body(error);
 
     }
 }
