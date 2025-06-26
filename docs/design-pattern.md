@@ -48,3 +48,22 @@
 .traceId("abc123")
 .path("/api/resource")
  .build();`
+
+## 3. Factory Pattern (Creational Pattern)
+This pattern is used to delegate the responsibility of object creation to a factory class that decides which concrete implementation to return based on input.
+The Factory pattern helps us decide which strategy to use, based on the input we get (like from a request parameter).
+
+
+**Context**:
+We needed a way to choose the correct FileUploadStrategy at runtime, depending on what type the user or system asks for (local, s3, etc.).
+**Solution**:
+- We created a FileUploadStrategyFactory class
+- It uses Spring to inject a map of all strategy beans (@Component("local"), @Component("s3"), etc.)
+- Based on the StorageType, the factory returns the matching strategy implementation
+
+Spring does the wiring behind the scenes, we don't need to manually write the if-else or switch code.
+We have used the Spring boot's dependency injection to resolve the interface to each of concrete classes
+Since each strategy is marked with @Component annotation, we can get all the concrete implementations.
+[Reference - Good article](https://thegeekyasian.com/strategy-pattern-spring-boot/)
+
+

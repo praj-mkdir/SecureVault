@@ -56,7 +56,7 @@ The system follows a **modular layered architecture** with clear separation of c
 
 ## Design Patterns
 - **Strategy Pattern**: Used to support multiple pluggable file upload destinations (S3, Local). Each destination implements a common `FileUploadStrategy` interface. This enables cloud-agnostic architecture and simplifies future expansion to other storage backends.
-
+- **Factory Pattern**: use to delegate the object creation based on the storage type. 
 
 ## 📚 Related Docs
 
