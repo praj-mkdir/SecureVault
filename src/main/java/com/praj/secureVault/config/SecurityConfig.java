@@ -41,7 +41,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtConverter jwtConverter) throws  Exception{
         http.authorizeHttpRequests((auth)->
-                auth.requestMatchers(HttpMethod.GET, "/api/public/**", "/docs/**").permitAll()
+                auth.requestMatchers(HttpMethod.GET, "/api/v1/public/**", "/docs/**").permitAll()
                         .anyRequest().authenticated()
 
         )

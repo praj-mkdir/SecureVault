@@ -9,9 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class HealthDTO {
+public class FileUploadResponseDTO {
 
-
-    private  String status;
-    private String service;
+    private String storageType;
+    private String filePath;
 }

@@ -1,6 +1,8 @@
 package com.praj.secureVault.util.enums;
 
 
+import com.praj.secureVault.exception.IllegalStorageTypeException;
+
 import java.util.Arrays;
 
 //Add the storageType as per your requirement here
@@ -23,6 +25,6 @@ public enum StorageType {
         return Arrays.stream(StorageType.values())
                 .filter(t -> t.getType().equalsIgnoreCase(value))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Invalid storage type: " + value));
+                .orElseThrow(() -> new IllegalStorageTypeException("Invalid storage type: " + value));
     }
 }

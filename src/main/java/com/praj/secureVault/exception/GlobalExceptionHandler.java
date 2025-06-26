@@ -12,6 +12,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.time.Instant;
 
@@ -46,20 +47,34 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex,request,HttpStatus.FORBIDDEN);
     }
 
+    //IllegalStorageTypeExecption
+    @ExceptionHandler(IllegalStorageTypeException.class)
+    public ResponseEntity<ApiErrorResponse> handleIllegalStorageTypeException(IllegalStorageTypeException ex, HttpServletRequest request){
+        return buildErrorResponse(ex,request,HttpStatus.UNPROCESSABLE_ENTITY);
+    }
 
-    //Catch general Exception  as fallback
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiErrorResponse> handleUnhandledExceptions(
-            Exception ex, HttpServletRequest request) {
-
-        log.error("Error [{}]: {} at {}", traceId, ex.getMessage(), request.getRequestURI());
-
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleNotFound(NoHandlerFoundException ex, HttpServletRequest request) {
         return buildErrorResponse(
-                new RuntimeException("Something went wrong. Please contact support."),
+                new RuntimeException("Resource not found: " + request.getRequestURI()),
                 request,
-                HttpStatus.INTERNAL_SERVER_ERROR
+                HttpStatus.NOT_FOUND
         );
     }
+
+//    //Catch general Exception  as fallback
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ApiErrorResponse> handleUnhandledExceptions(
+//            Exception ex, HttpServletRequest request) {
+//
+//        log.error("Error [{}]: {} at {}", traceId, ex.getMessage(), request.getRequestURI());
+//
+//        return buildErrorResponse(
+//                new RuntimeException("Something went wrong. Please contact support."),
+//                request,
+//                HttpStatus.INTERNAL_SERVER_ERROR
+//        );
+//    }
 
     //Builder function for APIERROR
     private  ResponseEntity<ApiErrorResponse> buildErrorResponse(Exception ex, HttpServletRequest request, HttpStatus status){
