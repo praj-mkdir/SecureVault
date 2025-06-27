@@ -32,6 +32,7 @@ public class RequestResponseFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(wrappedRequest,wrappedResponse);
         }finally {
+            //why in finally ? Finally runs after controller finishes before the response is sent back, to log everything going in and going out.
             //Request metadata
             log.info("Method: {}, URI: {}", wrappedRequest.getMethod(), wrappedRequest.getRequestURI());
 
