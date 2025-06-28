@@ -3,6 +3,7 @@ package com.praj.secureVault.service.strategy;
 import com.praj.secureVault.controller.UploadController;
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
+import com.praj.secureVault.util.FileUtilFuncitons;
 import com.praj.secureVault.util.enums.StorageType;
 import com.praj.secureVault.util.response.ApiErrorResponse;
 import com.praj.secureVault.util.response.ApiResponse;
@@ -38,7 +39,7 @@ public class LocalFileUploadStrategy implements FileUploadStrategy{
             throw new FileEmptyException("Uploaded file is empty");
         }
 
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileName = FileUtilFuncitons.generateStoredFileName(file.getOriginalFilename());
 
         Path destination = Paths.get(uploadDir).resolve(fileName).normalize();
 

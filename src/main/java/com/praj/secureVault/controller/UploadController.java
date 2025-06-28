@@ -43,7 +43,7 @@ public class UploadController {
             throw new FileEmptyException("File is empty!!");
         }
 
-        FileUploadResponseDTO dto = fileUploadService.uploadFile(file,strategy);
+        FileUploadResponseDTO dto = fileUploadService.uploadFile(file,strategy, principal);
         ApiResponse<FileUploadResponseDTO> response = ApiResponse.success(dto,"file uploaded to type");
         return ResponseEntity.ok(response);
     }

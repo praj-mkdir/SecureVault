@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
+import java.util.UUID;
 
 @Service
 public class FileUploadService {
@@ -18,12 +20,11 @@ public class FileUploadService {
         this.factory = factory;
     }
 
-    public FileUploadResponseDTO uploadFile(MultipartFile file, String strategyType) throws FileEmptyException, IOException {
-
+    public FileUploadResponseDTO uploadFile(MultipartFile file, String strategyType, Principal principal) throws FileEmptyException, IOException {
         StorageType type = StorageType.fromString(strategyType);
         FileUploadStrategy strategy = factory.getStrategy(type);
 
-      return  strategy.upload(file,"user1234");
+      return  strategy.upload(file, principal.getName());
 
 
     }
