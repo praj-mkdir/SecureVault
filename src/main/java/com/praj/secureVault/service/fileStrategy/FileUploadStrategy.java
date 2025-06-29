@@ -1,8 +1,7 @@
-package com.praj.secureVault.service.strategy;
+package com.praj.secureVault.service.fileStrategy;
 
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

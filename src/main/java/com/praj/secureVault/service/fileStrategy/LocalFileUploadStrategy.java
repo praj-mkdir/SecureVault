@@ -1,21 +1,14 @@
-package com.praj.secureVault.service.strategy;
+package com.praj.secureVault.service.fileStrategy;
 
-import com.praj.secureVault.controller.UploadController;
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
 import com.praj.secureVault.util.FileUtilFuncitons;
-import com.praj.secureVault.util.enums.StorageType;
-import com.praj.secureVault.util.response.ApiErrorResponse;
-import com.praj.secureVault.util.response.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
