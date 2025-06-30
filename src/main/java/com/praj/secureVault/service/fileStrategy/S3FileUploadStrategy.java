@@ -19,7 +19,7 @@ public class S3FileUploadStrategy implements FileUploadStrategy{
     public FileUploadResponseDTO upload(MultipartFile file, String username) throws IOException {
         //testing
         ApiResponse<String> response = ApiResponse.success("test","Service is healthy");
-        return new FileUploadResponseDTO("","");
+        return new FileUploadResponseDTO();
     }
 
 }

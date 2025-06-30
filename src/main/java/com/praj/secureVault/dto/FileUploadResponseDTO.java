@@ -1,16 +1,19 @@
 package com.praj.secureVault.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 public class FileUploadResponseDTO {
 
     private String storageType;
     private String filePath;
+    private String fileName;
+    private String uploadedAt;
+    private String checkSum;
+
+
 }

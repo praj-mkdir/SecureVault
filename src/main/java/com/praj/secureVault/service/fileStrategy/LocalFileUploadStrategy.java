@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 
 @Component("local")
 public class LocalFileUploadStrategy implements FileUploadStrategy{
@@ -43,8 +44,12 @@ public class LocalFileUploadStrategy implements FileUploadStrategy{
         }
 
         log.info("User '{}' upload file: '{}'",username,fileName);
-
-        return new FileUploadResponseDTO("Local", uploadDir.toString()) ;
+         return  FileUploadResponseDTO.builder()
+                .storageType("Local")
+                .filePath(uploadDir)
+                .fileName(file.getOriginalFilename())
+                .uploadedAt(LocalDateTime.now().toString())
+                .build();
 
     }
 }

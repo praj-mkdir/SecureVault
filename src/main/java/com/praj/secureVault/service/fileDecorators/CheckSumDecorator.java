@@ -28,7 +28,12 @@ public class CheckSumDecorator extends FileUploadStrategyDecorator {
         String checkSum = calculateSHA256CheckSum(file);
         log.info("Calculated SHA-256 checksum for file '{}': {}",
                 file.getOriginalFilename(), checkSum);
-        return wrappedStrategy.upload(file,username);
+
+        FileUploadResponseDTO response = wrappedStrategy.upload(file,username);
+        response.setCheckSum(checkSum);
+        log.info("File upload completed with checksum. File: {}, Size: {} bytes, Checksum: {}",
+                file.getOriginalFilename(), file.getSize(), checkSum);
+        return response;
     }
 
 

@@ -21,7 +21,8 @@ public class FileUploadStrategyFactory {
         this.strategyMap = strategyMap;
     }
 
-    @Value("file.upload.e  v")
+   @Value("${file.upload.enable-checkSum}")
+   private boolean enableCheckSum;
 
 
     public FileUploadStrategy getStrategy(StorageType type){
@@ -29,13 +30,13 @@ public class FileUploadStrategyFactory {
 
         FileUploadStrategy strategy = strategyMap.get(type.getType());
         FileUploadStrategy decorateStrategy = strategy;
-
-
-        log.info(strategy.toString());
         if(strategy == null ){
             throw new IllegalStorageTypeException("No strategy found for type  "+type);
         }
-        decorateStrategy = new CheckSumDecorator(decorateStrategy);
+
+        if(enableCheckSum){
+            decorateStrategy = new CheckSumDecorator(decorateStrategy);
+        }
         return decorateStrategy;
     }
 
