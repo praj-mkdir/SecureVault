@@ -33,6 +33,14 @@ The system follows a **modular layered architecture** with clear separation of c
 
 ---
 
+### 🔐 File Integrity Check (SHA-256)
+
+- Implemented using the **Decorator Pattern** around the existing FileUploadStrategy.
+- Only activated when the property `upload.checksum.enabled=true` is set in `application.yml`.
+- Computes SHA-256 hash of the uploaded file and stores it in the file metadata table.
+- Used to verify integrity post-upload and optionally returned during download.
+
+
 ## 📦 Architecture Diagram (Optional)
 
 > Consider adding a simple block diagram showing:
