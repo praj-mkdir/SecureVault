@@ -48,4 +48,9 @@
 
 ## Aspect oriented programming
 - AOP is paradigm that lets us segegrate the cross-cutting concerns, such logging and transaction (research about this) from business logic
-- 
+
+
+# General learnings 
+- spring-data-jpa only gives you the core interfaces for Spring Data repositories, and assumes you configure JPA and Hibernate yourself.
+- But spring-boot-starter-data-jpa is a Spring Boot starter that includes everything — Spring Data JPA, Hibernate (JPA provider), @Entity, auto-config, and repository support.
+So, in Spring Boot apps, always use the starter version to avoid missing pieces like @Entity.

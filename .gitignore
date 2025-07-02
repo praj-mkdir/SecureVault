@@ -39,3 +39,4 @@ build/
 /logFile.*.log
 /app/
 /uploadedfiles/
+/DB/Init.sql

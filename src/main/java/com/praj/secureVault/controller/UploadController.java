@@ -44,7 +44,7 @@ public class UploadController {
         }
 
         FileUploadResponseDTO dto = fileUploadService.uploadFile(file,strategy, principal);
-        ApiResponse<FileUploadResponseDTO> response = ApiResponse.success(dto,"file uploaded to type");
+        ApiResponse<FileUploadResponseDTO> response = ApiResponse.success(dto,"file uploaded to type " + dto.getStorageType());
         return ResponseEntity.ok(response);
     }
 

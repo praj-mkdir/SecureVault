@@ -7,3 +7,6 @@ CREATE DATABASE <Database-name-here> OWNER <User-name-here>;
 
 -- Grant all privileges on the database to the user
 GRANT ALL PRIVILEGES ON DATABASE <Database-name-here> TO <User-name-here>;
+
+
+
