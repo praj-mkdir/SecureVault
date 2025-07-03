@@ -3,7 +3,7 @@ package com.praj.secureVault.exception;
 
 
 
-public class IllegalStorageTypeException extends RuntimeException{
+public class IllegalStorageTypeException extends Exception{
     public IllegalStorageTypeException(String message){
         super(message);
     }

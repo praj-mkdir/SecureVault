@@ -1,6 +1,6 @@
 package com.praj.secureVault.exception;
 
-public class FileStorageException extends RuntimeException{
+public class FileStorageException extends Exception{
     public FileStorageException(String message){
         super(message);
     }
