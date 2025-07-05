@@ -25,7 +25,7 @@ public class FileUploadStrategyFactory {
    private boolean enableCheckSum;
 
 
-    public FileUploadStrategy getStrategy(StorageType type){
+    public FileUploadStrategy getStrategy(StorageType type) throws IllegalStorageTypeException {
 
 
         FileUploadStrategy strategy = strategyMap.get(type.getType());

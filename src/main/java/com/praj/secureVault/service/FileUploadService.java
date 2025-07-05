@@ -2,6 +2,7 @@ package com.praj.secureVault.service;
 
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
+import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.model.FileMetadata;
 import com.praj.secureVault.repository.FileMetaDataRepository;
 import com.praj.secureVault.service.fileStrategy.FileUploadStrategy;
@@ -31,7 +32,7 @@ public class FileUploadService {
         this.repository = repository;
     }
 
-    public FileUploadResponseDTO uploadFile(MultipartFile file, String strategyType, Principal principal) throws FileEmptyException, IOException {
+    public FileUploadResponseDTO uploadFile(MultipartFile file, String strategyType, Principal principal) throws FileEmptyException, IOException, IllegalStorageTypeException {
         StorageType type = StorageType.fromString(strategyType);
         FileUploadStrategy strategy = factory.getStrategy(type);
 

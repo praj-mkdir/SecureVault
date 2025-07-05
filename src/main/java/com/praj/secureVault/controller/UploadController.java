@@ -3,6 +3,7 @@ package com.praj.secureVault.controller;
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.dto.HealthDTO;
 import com.praj.secureVault.exception.FileEmptyException;
+import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.service.FileUploadService;
 import com.praj.secureVault.util.response.ApiResponse;
 import org.slf4j.Logger;
@@ -37,7 +38,7 @@ public class UploadController {
     public ResponseEntity<ApiResponse<FileUploadResponseDTO>> upload(
             @RequestParam("file") MultipartFile file,
             @RequestParam(value = "strategy") String strategy, Principal principal)
-            throws FileEmptyException, IOException {
+            throws FileEmptyException, IOException, IllegalStorageTypeException {
 
         if(file.isEmpty()){
             throw new FileEmptyException("File is empty!!");

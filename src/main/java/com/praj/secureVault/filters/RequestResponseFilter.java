@@ -23,6 +23,7 @@ public class RequestResponseFilter extends OncePerRequestFilter {
 
     private static final Logger log
             = LoggerFactory.getLogger(RequestResponseFilter.class);
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -30,8 +31,8 @@ public class RequestResponseFilter extends OncePerRequestFilter {
         ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request);
         ContentCachingResponseWrapper wrappedResponse = new ContentCachingResponseWrapper(response);
         try {
-            filterChain.doFilter(wrappedRequest,wrappedResponse);
-        }finally {
+            filterChain.doFilter(wrappedRequest, wrappedResponse);
+        } finally {
             //why in finally ? Finally runs after controller finishes before the response is sent back, to log everything going in and going out.
             //Request metadata
             log.info("Method: {}, URI: {}", wrappedRequest.getMethod(), wrappedRequest.getRequestURI());
@@ -48,7 +49,6 @@ public class RequestResponseFilter extends OncePerRequestFilter {
 
 
             log.info("Response Status: {}", wrappedResponse.getStatus());
-
 
 
             wrappedResponse.copyBodyToResponse();

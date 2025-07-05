@@ -19,38 +19,38 @@ import java.time.Instant;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static  final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-    String traceId  = MDC.get("traceId");
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    String traceId = MDC.get("traceId");
 
     @ExceptionHandler(FileStorageException.class)
-    public ResponseEntity<ApiErrorResponse> handleFileStorageException(FileStorageException ex, HttpServletRequest request){
-        return buildErrorResponse(ex,request,HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<ApiErrorResponse> handleFileStorageException(FileStorageException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex, request, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
     //File emtpy exception
     @ExceptionHandler(FileEmptyException.class)
-    public  ResponseEntity<ApiErrorResponse> handleFileEmtpyExcption(FileEmptyException ex, HttpServletRequest request){
-        return buildErrorResponse(ex,request, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ApiErrorResponse> handleFileEmtpyExcption(FileEmptyException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex, request, HttpStatus.BAD_REQUEST);
     }
 
 
     //Authentication Exception and Inalid JWT
     @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<ApiErrorResponse> handlAuthenticationExecption(AuthenticationException ex, HttpServletRequest request){
-        return buildErrorResponse(ex,request,HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<ApiErrorResponse> handlAuthenticationExecption(AuthenticationException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex, request, HttpStatus.UNAUTHORIZED);
     }
 
     //AccessDenied Exception
     @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<ApiErrorResponse> handleAccessDeniedException(AccessDeniedException ex, HttpServletRequest request){
-        return buildErrorResponse(ex,request,HttpStatus.FORBIDDEN);
+    public ResponseEntity<ApiErrorResponse> handleAccessDeniedException(AccessDeniedException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex, request, HttpStatus.FORBIDDEN);
     }
 
     //IllegalStorageTypeExecption
     @ExceptionHandler(IllegalStorageTypeException.class)
-    public ResponseEntity<ApiErrorResponse> handleIllegalStorageTypeException(IllegalStorageTypeException ex, HttpServletRequest request){
-        return buildErrorResponse(ex,request,HttpStatus.UNPROCESSABLE_ENTITY);
+    public ResponseEntity<ApiErrorResponse> handleIllegalStorageTypeException(IllegalStorageTypeException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex, request, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
@@ -77,9 +77,9 @@ public class GlobalExceptionHandler {
 //    }
 
     //Builder function for APIERROR
-    private  ResponseEntity<ApiErrorResponse> buildErrorResponse(Exception ex, HttpServletRequest request, HttpStatus status){
+    private ResponseEntity<ApiErrorResponse> buildErrorResponse(Exception ex, HttpServletRequest request, HttpStatus status) {
         String traceId = MDC.get("traceId");
-        log.error("Exception [{}]: {}", traceId, ex.getMessage() );
+        log.error("Exception [{}]: {}", traceId, ex.getMessage());
 
         ApiErrorResponse error = new ApiErrorResponse.Builder()
                 .status(status.value())

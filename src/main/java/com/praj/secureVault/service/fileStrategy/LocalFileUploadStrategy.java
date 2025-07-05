@@ -18,8 +18,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 
 @Component("local")
-public class LocalFileUploadStrategy implements FileUploadStrategy{
-
+public class LocalFileUploadStrategy implements FileUploadStrategy {
 
 
     @Value("${files.upload.dir}")
@@ -39,17 +38,17 @@ public class LocalFileUploadStrategy implements FileUploadStrategy{
 
         Files.createDirectories(destination.getParent());
 
-        try(InputStream inputStream = file.getInputStream()){
-            Files.copy(inputStream,destination, StandardCopyOption.REPLACE_EXISTING);
+        try (InputStream inputStream = file.getInputStream()) {
+            Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
         }
 
-        log.info("User '{}' upload file: '{}'",username,fileName);
-         return  FileUploadResponseDTO.builder()
+        log.info("User '{}' upload file: '{}'", username, fileName);
+        return FileUploadResponseDTO.builder()
                 .storageType("Local")
                 .filePath(uploadDir)
                 .fileName(file.getOriginalFilename())
                 .uploadedAt(LocalDateTime.now().toString())
-                 .filesize(file.getSize())
+                .filesize(file.getSize())
                 .build();
 
     }
