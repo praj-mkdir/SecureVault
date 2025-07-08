@@ -37,12 +37,13 @@ public class FileUploadService {
         FileUploadStrategy strategy = factory.getStrategy(type);
 
       FileUploadResponseDTO response =  strategy.upload(file, principal.getName());
-      saveFileMetadata(response);
+      FileMetadata savedData = saveFileMetadata(response);
+      response.setFileID(savedData.getId());
       return response;
 
     }
 
-    private void saveFileMetadata(FileUploadResponseDTO response){
+    private FileMetadata saveFileMetadata(FileUploadResponseDTO response){
         FileMetadata metadata = FileMetadata.builder()
                 .fileName(response.getFileName())
                 .size(response.getFilesize())
@@ -53,7 +54,8 @@ public class FileUploadService {
                 .checksumSha256(response.getCheckSum())
                 .traceId(MDC.get("traceId")).build();
         log.info("Saving the file Metadata ");
-        repository.save(metadata);
+        return repository.save(metadata);
+
     }
 
 }
