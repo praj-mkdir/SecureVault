@@ -1,26 +1,24 @@
 package com.praj.secureVault.util.enums;
 
-
 import com.praj.secureVault.exception.IllegalStorageTypeException;
+import jakarta.persistence.GeneratedValue;
 import lombok.Getter;
 
 import java.util.Arrays;
 
-//Add the storageType as per your requirement here
 @Getter
-public enum StorageType {
-    LOCAL("local"),
-    S3("s3"),
-    AZURE("azure");
+public enum DownloadStorageType {
+    LOCAL("localDownload"),
+    S3("s3Download"),
+    AZURE("azureDownload");
 
     private final String type;
-
-    StorageType(String type) {
+    DownloadStorageType(String type) {
         this.type = type;
     }
 
-    public static StorageType fromString(String value) throws IllegalStorageTypeException {
-        return Arrays.stream(StorageType.values())
+    public static DownloadStorageType fromString(String value) throws IllegalStorageTypeException {
+        return Arrays.stream(DownloadStorageType.values())
                 .filter(t -> t.getType().equalsIgnoreCase(value))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStorageTypeException("Invalid storage type: " + value));

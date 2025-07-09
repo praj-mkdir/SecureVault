@@ -49,6 +49,7 @@ public class LocalFileUploadStrategy implements FileUploadStrategy {
                 .fileName(file.getOriginalFilename())
                 .uploadedAt(LocalDateTime.now().toString())
                 .filesize(file.getSize())
+                .contentType(file.getContentType())
                 .build();
 
     }
