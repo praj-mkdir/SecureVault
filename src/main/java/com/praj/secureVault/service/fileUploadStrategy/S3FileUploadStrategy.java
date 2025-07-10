@@ -1,4 +1,4 @@
-package com.praj.secureVault.service.fileStrategy;
+package com.praj.secureVault.service.fileUploadStrategy;
 
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.util.response.ApiResponse;

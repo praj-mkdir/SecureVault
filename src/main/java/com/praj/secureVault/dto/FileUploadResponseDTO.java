@@ -16,6 +16,7 @@ public class FileUploadResponseDTO {
     private String checkSum;
     private Long filesize;
     private String fileID;
+    private  String contentType;
 
 
 }

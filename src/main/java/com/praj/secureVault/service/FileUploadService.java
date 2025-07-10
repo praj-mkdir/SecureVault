@@ -5,21 +5,18 @@ import com.praj.secureVault.exception.FileEmptyException;
 import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.model.FileMetadata;
 import com.praj.secureVault.repository.FileMetaDataRepository;
-import com.praj.secureVault.service.fileStrategy.FileUploadStrategy;
-import com.praj.secureVault.service.fileStrategy.FileUploadStrategyFactory;
+import com.praj.secureVault.service.fileUploadStrategy.FileUploadStrategy;
+import com.praj.secureVault.service.fileUploadStrategy.FileUploadStrategyFactory;
 import com.praj.secureVault.util.AuthUtil;
-import com.praj.secureVault.util.enums.StorageType;
+import com.praj.secureVault.util.enums.UploadStorageType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.management.loading.PrivateClassLoader;
-import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
-import java.time.Instant;
 
 @Service
 public class FileUploadService {
@@ -33,7 +30,7 @@ public class FileUploadService {
     }
 
     public FileUploadResponseDTO uploadFile(MultipartFile file, String strategyType, Principal principal) throws FileEmptyException, IOException, IllegalStorageTypeException {
-        StorageType type = StorageType.fromString(strategyType);
+        UploadStorageType type = UploadStorageType.fromString(strategyType);
         FileUploadStrategy strategy = factory.getStrategy(type);
 
       FileUploadResponseDTO response =  strategy.upload(file, principal.getName());
@@ -52,7 +49,9 @@ public class FileUploadService {
                 .uploadedAt(response.getUploadedAt())
                 .size(response.getFilesize()/1024)
                 .checksumSha256(response.getCheckSum())
-                .traceId(MDC.get("traceId")).build();
+                .traceId(MDC.get("traceId"))
+                .contentType(response.getContentType())
+                .build();
         log.info("Saving the file Metadata ");
         return repository.save(metadata);
 

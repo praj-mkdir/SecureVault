@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Table(name ="file_metadata")
@@ -17,9 +18,14 @@ import java.time.Instant;
 public class FileMetadata {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    @Column(name = "id", nullable = false, updatable = false)
+    private String id = UUID.randomUUID().toString();
+    @PrePersist
+    public void prePersist() {
+        if (id == null) {
+            id = UUID.randomUUID().toString();
+        }
+    }
     private String fileName;
 
     private Long size;
@@ -38,6 +44,9 @@ public class FileMetadata {
 
     @Column(name = "trace_id")
     private String traceId;
+
+    @Column(name = "content_type")
+    private String contentType;
 
 
 }

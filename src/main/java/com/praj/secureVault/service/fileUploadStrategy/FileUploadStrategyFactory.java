@@ -1,9 +1,9 @@
-package com.praj.secureVault.service.fileStrategy;
+package com.praj.secureVault.service.fileUploadStrategy;
 
 
 import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.service.fileDecorators.CheckSumDecorator;
-import com.praj.secureVault.util.enums.StorageType;
+import com.praj.secureVault.util.enums.UploadStorageType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +14,7 @@ import java.util.Map;
 @Component
 public class FileUploadStrategyFactory {
 
-    private static final Logger log = LoggerFactory.getLogger(FileUploadStrategyFactory.class);
+   private static final Logger log = LoggerFactory.getLogger(FileUploadStrategyFactory.class);
     private final Map<String, FileUploadStrategy> strategyMap;
 
     public  FileUploadStrategyFactory(Map<String, FileUploadStrategy> strategyMap){
@@ -25,7 +25,7 @@ public class FileUploadStrategyFactory {
    private boolean enableCheckSum;
 
 
-    public FileUploadStrategy getStrategy(StorageType type) throws IllegalStorageTypeException {
+    public FileUploadStrategy getStrategy(UploadStorageType type) throws IllegalStorageTypeException {
 
 
         FileUploadStrategy strategy = strategyMap.get(type.getType());
