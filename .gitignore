@@ -40,4 +40,3 @@ build/
 /app/
 /uploadedfiles/
 /DB/Init.sql
-/src/main/java/com/praj/secureVault/config/S3ClientConfig.java
