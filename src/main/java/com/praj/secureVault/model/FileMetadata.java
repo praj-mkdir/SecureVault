@@ -48,5 +48,6 @@ public class FileMetadata {
     @Column(name = "content_type")
     private String contentType;
 
-
+    @Column(name = "generated_FileName")
+    private String generated_FileName;
 }

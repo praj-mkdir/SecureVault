@@ -17,6 +17,7 @@ public class FileUploadResponseDTO {
     private Long filesize;
     private String fileID;
     private  String contentType;
+    private String generateFileName;
 
 
 }
