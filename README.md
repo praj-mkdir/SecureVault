@@ -5,7 +5,7 @@ A secure, modular backend service built using Java 20+ and Spring Boot for uploa
 
 
 ## Tech Stack
-- **Language**: Java 17+
+- **Language**: Java 20+
 - **Framework**: Spring Boot
 - **Auth**: Keycloak (JWT, OAuth2) 
 - **Storage**: Local filesystem (dev) & AWS S3 (prod-ready)
