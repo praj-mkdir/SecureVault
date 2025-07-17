@@ -41,9 +41,15 @@ A secure, modular backend service built using Java 20+ and Spring Boot for uploa
 - docker-compose up -d
 
 ###  Run in Dev Profile (H2 + Local Upload)
-- ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-- Local file upload path: ./uploadedfiles
-- H2 console: http://localhost:8081/h2-console
+1. Build the JAR using Maven <br>
+`   mvn clean package
+`
+2. Run the JAR using Java  <br>
+`   java -jar target/securevault-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev --files.upload.dir=<directory-Path>
+`
+- Upload directory and Port number can be set through passing CLI or Using ENV variables 
+
+3. H2 console: http://localhost:8081/h2-console
 
 ### Swagger UI
 - http://localhost:8081/swagger-ui.html
