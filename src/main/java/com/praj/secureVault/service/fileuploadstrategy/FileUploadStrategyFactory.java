@@ -1,8 +1,8 @@
-package com.praj.secureVault.service.fileUploadStrategy;
+package com.praj.secureVault.service.fileuploadstrategy;
 
 
 import com.praj.secureVault.exception.IllegalStorageTypeException;
-import com.praj.secureVault.service.fileDecorators.CheckSumDecorator;
+import com.praj.secureVault.service.filedecorators.CheckSumDecorator;
 import com.praj.secureVault.util.enums.UploadStorageType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

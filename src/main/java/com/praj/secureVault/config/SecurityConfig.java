@@ -19,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     public static final String ADMIN = "admin";
-    public static  final String USER = "user";
+    public static final String USER = "user";
     private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
@@ -37,21 +37,25 @@ public class SecurityConfig {
     public JwtConverter jwtConverter(
             JwtConverterProperties jwtConverterProperties,
             JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter) {
-        return new JwtConverter( jwtGrantedAuthoritiesConverter,jwtConverterProperties);
+        return new JwtConverter(jwtGrantedAuthoritiesConverter, jwtConverterProperties);
     }
-
 
 
     /// also create the Securityfilterchain based on the profile , one for production and one for dev
     @Bean
     @Profile("dev")
-    public SecurityFilterChain devSecurityFilterChain(HttpSecurity http, JwtConverter jwtConverter) throws  Exception{
-       log.info("Inside the dev devSecurityFilterChain ");
-        http.authorizeHttpRequests((auth)->
-                auth.requestMatchers(HttpMethod.GET, "/api/v1/public/**", "/docs/**").permitAll()
-                        .anyRequest().authenticated()
+    public SecurityFilterChain devSecurityFilterChain(HttpSecurity http, JwtConverter jwtConverter) throws Exception {
+        log.info("Inside the dev devSecurityFilterChain ");
+        http.
+                csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests((auth) ->
+                                auth
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/public/**", "/docs/**").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/api/v1/public/**", "/docs/**").permitAll()
 
-        )
+                                        .anyRequest().permitAll()
+
+                )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt
                                 .jwtAuthenticationConverter(jwtConverter)
@@ -63,10 +67,10 @@ public class SecurityConfig {
 
     @Bean
     @Profile("prod") //Add stricter security features - here
-    public SecurityFilterChain prodSecurityFilterChain(HttpSecurity http, JwtConverter jwtConverter) throws  Exception{
+    public SecurityFilterChain prodSecurityFilterChain(HttpSecurity http, JwtConverter jwtConverter) throws Exception {
         log.info("Inside the prod prodSecurityFilterChain ");
-        http.authorizeHttpRequests((auth)->
-                        auth.requestMatchers(HttpMethod.GET, "/api/v1/public/**").permitAll()
+        http.authorizeHttpRequests((auth) ->
+                        auth.requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

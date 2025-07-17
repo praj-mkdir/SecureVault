@@ -1,8 +1,7 @@
-package com.praj.secureVault.service.fileDownloadStrategy;
+package com.praj.secureVault.service.filedownloadstrategy;
 
 import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.util.enums.DownloadStorageType;
-import com.praj.secureVault.util.enums.UploadStorageType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

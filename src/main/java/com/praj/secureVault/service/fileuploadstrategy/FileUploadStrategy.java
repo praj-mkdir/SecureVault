@@ -1,4 +1,4 @@
-package com.praj.secureVault.service.fileUploadStrategy;
+package com.praj.secureVault.service.fileuploadstrategy;
 
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;

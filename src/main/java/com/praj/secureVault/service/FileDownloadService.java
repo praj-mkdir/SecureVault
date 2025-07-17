@@ -1,15 +1,13 @@
 package com.praj.secureVault.service;
 
 import com.praj.secureVault.dto.FileDownloadResponseDTO;
+import com.praj.secureVault.exception.CustomFileNotFoundException;
 import com.praj.secureVault.model.FileMetadata;
 import com.praj.secureVault.repository.FileMetaDataRepository;
-import com.praj.secureVault.service.fileDownloadStrategy.FileDownloadStrategy;
-import com.praj.secureVault.service.fileDownloadStrategy.FileDownloadStrategyFactory;
+import com.praj.secureVault.service.filedownloadstrategy.FileDownloadStrategy;
+import com.praj.secureVault.service.filedownloadstrategy.FileDownloadStrategyFactory;
 import com.praj.secureVault.util.enums.DownloadStorageType;
-import com.praj.secureVault.util.enums.UploadStorageType;
 import org.springframework.stereotype.Service;
-
-import java.io.FileNotFoundException;
 
 @Service
 public class FileDownloadService {
@@ -33,8 +31,10 @@ public class FileDownloadService {
 
     }
 
-    public FileMetadata findFileById(String id) throws FileNotFoundException {
-        return repository.findById(id).orElseThrow(FileNotFoundException::new);
+    public FileMetadata findFileById(String id) throws CustomFileNotFoundException {
+        return repository.findById(id).orElseThrow(
+                () -> new CustomFileNotFoundException(String.format("File with id %s does not exists",id))
+        );
     }
 
 

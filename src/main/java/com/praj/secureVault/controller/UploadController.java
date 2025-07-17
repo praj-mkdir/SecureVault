@@ -34,10 +34,10 @@ public class UploadController {
 
 
     @PostMapping("/upload")
-    @PreAuthorize("hasRole('user')")
+//    @PreAuthorize("hasRole('user')")
     public ResponseEntity<ApiResponse<FileUploadResponseDTO>> upload(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "strategy") String strategy, Principal principal)
+            @RequestParam(defaultValue = "localDownload", value = "strategy") String strategy, Principal principal)
             throws FileEmptyException, IOException, IllegalStorageTypeException {
 
         if(file.isEmpty()){

@@ -1,9 +1,9 @@
-package com.praj.secureVault.service.fileDecorators;
+package com.praj.secureVault.service.filedecorators;
 
 import com.praj.secureVault.controller.UploadController;
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
-import com.praj.secureVault.service.fileUploadStrategy.FileUploadStrategy;
+import com.praj.secureVault.service.fileuploadstrategy.FileUploadStrategy;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

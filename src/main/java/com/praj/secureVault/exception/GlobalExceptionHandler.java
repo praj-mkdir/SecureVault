@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import java.io.FileNotFoundException;
 import java.time.Instant;
 
 @RestControllerAdvice
@@ -27,6 +28,12 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex, request, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+
+    //File Not found exception
+    @ExceptionHandler(CustomFileNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleCustomFIleNotFoundException(CustomFileNotFoundException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex, request, HttpStatus.NOT_FOUND);
+    }
 
     //File emtpy exception
     @ExceptionHandler(FileEmptyException.class)
@@ -55,11 +62,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleNotFound(NoHandlerFoundException ex, HttpServletRequest request) {
-        return buildErrorResponse(
-                new RuntimeException("Resource not found: " + request.getRequestURI()),
-                request,
-                HttpStatus.NOT_FOUND
-        );
+        return buildErrorResponse(new RuntimeException("Resource not found: " + request.getRequestURI()), request, HttpStatus.NOT_FOUND);
     }
 
 //    //Catch general Exception  as fallback
@@ -81,13 +84,7 @@ public class GlobalExceptionHandler {
         String traceId = MDC.get("traceId");
         log.error("Exception [{}]: {}", traceId, ex.getMessage());
 
-        ApiErrorResponse error = new ApiErrorResponse.Builder()
-                .status(status.value())
-                .message(ex.getMessage())
-                .timestamp(Instant.now())
-                .traceId(traceId)
-                .path(request.getRequestURI())
-                .build();
+        ApiErrorResponse error = new ApiErrorResponse.Builder().status(status.value()).message(ex.getMessage()).timestamp(Instant.now()).traceId(traceId).path(request.getRequestURI()).build();
         return ResponseEntity.status(status).body(error);
 
     }

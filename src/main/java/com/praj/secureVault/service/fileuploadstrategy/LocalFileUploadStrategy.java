@@ -1,4 +1,4 @@
-package com.praj.secureVault.service.fileUploadStrategy;
+package com.praj.secureVault.service.fileuploadstrategy;
 
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
@@ -43,14 +43,7 @@ public class LocalFileUploadStrategy implements FileUploadStrategy {
         }
 
         log.info("User '{}' upload file: '{}'", username, fileName);
-        return FileUploadResponseDTO.builder()
-                .storageType("Local")
-                .filePath(uploadDir)
-                .fileName(file.getOriginalFilename())
-                .uploadedAt(LocalDateTime.now().toString())
-                .filesize(file.getSize())
-                .contentType(file.getContentType())
-                .build();
+        return FileUploadResponseDTO.builder().storageType("Local").filePath(uploadDir).fileName(file.getOriginalFilename()).uploadedAt(LocalDateTime.now().toString()).filesize(file.getSize()).contentType(file.getContentType()).generateFileName(fileName).build();
 
     }
 }

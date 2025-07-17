@@ -1,4 +1,4 @@
-package com.praj.secureVault.service.fileDownloadStrategy;
+package com.praj.secureVault.service.filedownloadstrategy;
 
 import com.praj.secureVault.dto.FileDownloadResponseDTO;
 import com.praj.secureVault.model.FileMetadata;
