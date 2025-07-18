@@ -6,6 +6,7 @@ import com.praj.secureVault.exception.FileEmptyException;
 import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.service.FileUploadService;
 import com.praj.secureVault.util.response.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +22,11 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/v1/file")
+@Slf4j
 public class UploadController {
 
 
-    private static final Logger log = LoggerFactory.getLogger(UploadController.class);
+//    private static final Logger log = LoggerFactory.getLogger(UploadController.class);
 
     private final FileUploadService fileUploadService;
 

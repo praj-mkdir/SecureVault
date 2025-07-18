@@ -4,6 +4,7 @@ import com.praj.secureVault.dto.FileDownloadResponseDTO;
 import com.praj.secureVault.model.FileMetadata;
 import com.praj.secureVault.repository.FileMetaDataRepository;
 import com.praj.secureVault.service.FileDownloadService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.InputStreamResource;
@@ -34,12 +35,13 @@ import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("/api/v1/file")
+@Slf4j
 public class DownloadController {
 
     private final FileDownloadService downloadService;
 
 
-    private static final Logger log = LoggerFactory.getLogger(DownloadController.class);
+//    private static final Logger log = LoggerFactory.getLogger(DownloadController.class);
     private final FileMetaDataRepository repository;
 
 

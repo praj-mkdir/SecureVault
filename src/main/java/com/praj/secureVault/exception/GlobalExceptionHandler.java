@@ -3,6 +3,7 @@ package com.praj.secureVault.exception;
 import com.praj.secureVault.util.response.ApiErrorResponse;
 import com.praj.secureVault.util.response.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -18,9 +19,10 @@ import java.io.FileNotFoundException;
 import java.time.Instant;
 
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+//    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     String traceId = MDC.get("traceId");
 
     @ExceptionHandler(FileStorageException.class)

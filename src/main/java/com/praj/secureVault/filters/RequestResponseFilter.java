@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -19,6 +20,7 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class RequestResponseFilter extends OncePerRequestFilter {
 
     @Value("${spring.profiles.active:}")
@@ -87,7 +89,7 @@ public class RequestResponseFilter extends OncePerRequestFilter {
 
 
 
-    private static final Logger log = LoggerFactory.getLogger(RequestResponseFilter.class);
+//    private static final Logger log = LoggerFactory.getLogger(RequestResponseFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
