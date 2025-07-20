@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
 import com.praj.secureVault.util.FileUtilFuncitons;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,9 +21,10 @@ import java.time.LocalDateTime;
 //todo implement this class afte configuring the s3 with springboot
 
 @Component("s3")
+@Slf4j
 public class S3FileUploadStrategy implements FileUploadStrategy{
 
-    private static final Logger log = LoggerFactory.getLogger(S3FileUploadStrategy.class);
+//    private static final Logger log = LoggerFactory.getLogger(S3FileUploadStrategy.class);
 
 
     @Value("${aws.bucket.name}")

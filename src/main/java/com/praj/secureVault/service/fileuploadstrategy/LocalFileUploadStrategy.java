@@ -3,6 +3,7 @@ package com.praj.secureVault.service.fileuploadstrategy;
 import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.exception.FileEmptyException;
 import com.praj.secureVault.util.FileUtilFuncitons;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,13 +19,14 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 
 @Component("local")
+@Slf4j
 public class LocalFileUploadStrategy implements FileUploadStrategy {
 
 
     @Value("${files.upload.dir}")
     private String uploadDir;
 
-    private static final Logger log = LoggerFactory.getLogger(LocalFileUploadStrategy.class);
+//    private static final Logger log = LoggerFactory.getLogger(LocalFileUploadStrategy.class);
 
     @Override
     public FileUploadResponseDTO upload(MultipartFile file, String username) throws IOException, FileEmptyException {

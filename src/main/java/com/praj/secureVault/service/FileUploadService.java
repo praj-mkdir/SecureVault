@@ -9,6 +9,7 @@ import com.praj.secureVault.service.fileuploadstrategy.FileUploadStrategy;
 import com.praj.secureVault.service.fileuploadstrategy.FileUploadStrategyFactory;
 import com.praj.secureVault.util.AuthUtil;
 import com.praj.secureVault.util.enums.UploadStorageType;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -19,10 +20,11 @@ import java.io.IOException;
 import java.security.Principal;
 
 @Service
+@Slf4j
 public class FileUploadService {
     private  final FileUploadStrategyFactory factory;
     private final FileMetaDataRepository repository;
-    private static final Logger log = LoggerFactory.getLogger(FileUploadService.class);
+//    private static final Logger log = LoggerFactory.getLogger(FileUploadService.class);
 
     public FileUploadService(FileUploadStrategyFactory factory, FileMetaDataRepository repository){
         this.factory = factory;

@@ -2,6 +2,7 @@ package com.praj.secureVault.service.filedownloadstrategy;
 
 import com.praj.secureVault.exception.IllegalStorageTypeException;
 import com.praj.secureVault.util.enums.DownloadStorageType;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -9,8 +10,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
+@Slf4j
 public class FileDownloadStrategyFactory {
-    private static final Logger log = LoggerFactory.getLogger(FileDownloadStrategyFactory.class);
+//    private static final Logger log = LoggerFactory.getLogger(FileDownloadStrategyFactory.class);
 
     private final Map<String,FileDownloadStrategy> strategyMap;
 

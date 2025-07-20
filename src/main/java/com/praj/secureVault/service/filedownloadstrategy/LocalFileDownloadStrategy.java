@@ -3,6 +3,7 @@ package com.praj.secureVault.service.filedownloadstrategy;
 import com.praj.secureVault.dto.FileDownloadResponseDTO;
 import com.praj.secureVault.exception.CustomFileNotFoundException;
 import com.praj.secureVault.model.FileMetadata;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.InputStreamResource;
@@ -18,8 +19,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Component("localDownload")
+@Slf4j
 public class LocalFileDownloadStrategy implements FileDownloadStrategy {
-    private static final Logger log = LoggerFactory.getLogger(LocalFileDownloadStrategy.class);
+//    private static final Logger log = LoggerFactory.getLogger(LocalFileDownloadStrategy.class);
 
 
     @Override
