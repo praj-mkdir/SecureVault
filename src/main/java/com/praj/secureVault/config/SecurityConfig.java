@@ -1,5 +1,6 @@
 package com.praj.secureVault.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +17,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@Slf4j
 public class SecurityConfig {
 
     public static final String ADMIN = "admin";
     public static final String USER = "user";
-    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+//    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 

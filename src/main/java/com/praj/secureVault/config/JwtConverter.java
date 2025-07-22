@@ -1,6 +1,7 @@
 package com.praj.secureVault.config;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
@@ -27,9 +28,10 @@ import java.util.stream.Stream;
 
 
 @RequiredArgsConstructor
+@Slf4j
 public class JwtConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
-    private static final Logger log = LoggerFactory.getLogger(JwtConverter.class);
+//    private static final Logger log = LoggerFactory.getLogger(JwtConverter.class);
     private  final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter;
     private final JwtConverterProperties jwtConverterProperties;
 

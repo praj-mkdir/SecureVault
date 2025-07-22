@@ -6,6 +6,7 @@ import com.praj.secureVault.util.response.ApiErrorResponse;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -18,9 +19,10 @@ import java.io.IOException;
 import java.time.Instant;
 
 @Component
+@Slf4j
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-    private static final Logger log = LoggerFactory.getLogger(CustomAuthenticationEntryPoint.class);
+//    private static final Logger log = LoggerFactory.getLogger(CustomAuthenticationEntryPoint.class);
 
 
 
