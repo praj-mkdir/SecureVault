@@ -39,15 +39,16 @@ public class UploadController {
 //    @PreAuthorize("hasRole('user')")
     public ResponseEntity<ApiResponse<FileUploadResponseDTO>> upload(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(defaultValue = "localDownload", value = "strategy") String strategy, Principal principal)
+//            @RequestParam(defaultValue = "localDownload", value = "strategy") String strategy, Principal principal)
+            Principal principal)
             throws FileEmptyException, IOException, IllegalStorageTypeException {
 
-        if(file.isEmpty()){
+        if (file.isEmpty()) {
             throw new FileEmptyException("File is empty!!");
         }
 
-        FileUploadResponseDTO dto = fileUploadService.uploadFile(file,strategy, principal);
-        ApiResponse<FileUploadResponseDTO> response = ApiResponse.success(dto,"file uploaded to type " + dto.getStorageType());
+        FileUploadResponseDTO dto = fileUploadService.uploadFile(file, principal);
+        ApiResponse<FileUploadResponseDTO> response = ApiResponse.success(dto, "file uploaded to type " + dto.getStorageType());
         return ResponseEntity.ok(response);
     }
 

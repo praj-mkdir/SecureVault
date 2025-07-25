@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,13 +19,12 @@ import java.io.InputStream;
 import java.time.LocalDateTime;
 
 
-//todo implement this class afte configuring the s3 with springboot
 
 @Component("s3")
 @Slf4j
+@ConditionalOnProperty(name = "file.upload.strategy", havingValue = "s3")
 public class S3FileUploadStrategy implements FileUploadStrategy{
 
-//    private static final Logger log = LoggerFactory.getLogger(S3FileUploadStrategy.class);
 
 
     @Value("${aws.bucket.name}")

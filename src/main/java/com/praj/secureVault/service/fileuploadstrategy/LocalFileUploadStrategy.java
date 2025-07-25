@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,13 +22,12 @@ import java.time.LocalDateTime;
 
 @Component("local")
 @Slf4j
+@ConditionalOnProperty(name = "file.upload.strategy", havingValue = "local")
 public class LocalFileUploadStrategy implements FileUploadStrategy {
 
 
     @Value("${files.upload.dir}")
     private String uploadDir;
-
-//    private static final Logger log = LoggerFactory.getLogger(LocalFileUploadStrategy.class);
 
     @Override
     public FileUploadResponseDTO upload(MultipartFile file, String username) throws IOException, FileEmptyException {
