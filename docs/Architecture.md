@@ -1,4 +1,4 @@
-# 🏗️ Overview
+ 🏗️ Overview
 
 A backend platform for **secure file sharing**, built with production-grade principles. It uses **JWT/OAuth2-based authentication** via Keycloak, file storage on **AWS S3**, structured logging with traceability, and is designed with modular architecture and clean engineering practices. Features like **antivirus scanning** and **auditing** are planned as part of future scope.
 
