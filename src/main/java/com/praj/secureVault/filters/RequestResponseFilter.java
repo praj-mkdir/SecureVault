@@ -113,12 +113,12 @@ public class RequestResponseFilter extends OncePerRequestFilter {
                 log.info("Trace ID: {}", traceId);
             }
 
-            if ("dev".equalsIgnoreCase(activeProfile)) {
-                log.debug("Headers: {}", Collections.list(request.getHeaderNames()).stream()
-                        .collect(Collectors.toMap(h -> h, request::getHeader)));
-
-                log.debug("Query Params: {}", request.getQueryString());
-            }
+//            if ("dev".equalsIgnoreCase(activeProfile)) {
+//                log.debug("Headers: {}", Collections.list(request.getHeaderNames()).stream()
+//                        .collect(Collectors.toMap(h -> h, request::getHeader)));
+//
+//                log.debug("Query Params: {}", request.getQueryString());
+//            }
         }
     }
 }
