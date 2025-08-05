@@ -42,3 +42,7 @@ build/
 /DB/Init.sql
 /docs/Learnings.md
 /src/main/java/com/praj/secureVault/redisRateLimiter/
+/terraform/environments/dev/.terraform.lock.hcl
+/terraform/environments/dev/terraform.tfstate.backup
+/terraform/environments/dev/terraform.tfstate
+/terraform/environments/dev/.terraform/
