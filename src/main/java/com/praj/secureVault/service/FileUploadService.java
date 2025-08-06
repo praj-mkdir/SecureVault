@@ -25,10 +25,12 @@ public class FileUploadService {
 //    private  final FileUploadStrategyFactory factory;
     private final FileMetaDataRepository repository;
     private final FileUploadStrategy strategy;
+    private final AuthUtil authUtil;
 
-    public FileUploadService(FileMetaDataRepository repository, FileUploadStrategy strategy){
+    public FileUploadService(FileMetaDataRepository repository, FileUploadStrategy strategy, AuthUtil authUtil){
         this.repository = repository;
         this.strategy = strategy;
+        this.authUtil = authUtil;
     }
 
     public FileUploadResponseDTO uploadFile(MultipartFile file, Principal principal) throws FileEmptyException, IOException, IllegalStorageTypeException {
@@ -47,7 +49,7 @@ public class FileUploadService {
                 .fileName(response.getFileName())
                 .size(response.getFilesize())
                 .storagePath(response.getFilePath())
-                .uploadedBy(AuthUtil.getCurrentUsername())
+                .uploadedBy(authUtil.getCurrentUsername())
                 .uploadedAt(response.getUploadedAt())
                 .size(response.getFilesize()/1024)
                 .checksumSha256(response.getCheckSum())
