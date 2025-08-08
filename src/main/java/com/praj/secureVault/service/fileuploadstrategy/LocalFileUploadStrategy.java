@@ -29,15 +29,21 @@ public class LocalFileUploadStrategy implements FileUploadStrategy {
     @Value("${files.upload.dir}")
     private String uploadDir;
 
+    private final FileUtilFuncitons fileUtil;
+
+    public LocalFileUploadStrategy(FileUtilFuncitons fileUtil) {
+        this.fileUtil = fileUtil;
+    }
+
     @Override
     public FileUploadResponseDTO upload(MultipartFile file, String username) throws IOException, FileEmptyException {
         if (file.isEmpty()) {
             throw new FileEmptyException("Uploaded file is empty");
         }
 
-        String fileName = FileUtilFuncitons.generateStoredFileName(file.getOriginalFilename());
+        String fileName = fileUtil.generateStoredFileName(file.getOriginalFilename());
 
-        Path destination = Paths.get(uploadDir).resolve(fileName).normalize();
+        Path destination = Paths.get(fileUtil.resolveUserPath()).resolve(fileName).normalize();
 
         Files.createDirectories(destination.getParent());
 
@@ -46,7 +52,7 @@ public class LocalFileUploadStrategy implements FileUploadStrategy {
         }
 
         log.info("User '{}' upload file: '{}'", username, fileName);
-        return FileUploadResponseDTO.builder().storageType("Local").filePath(uploadDir).fileName(file.getOriginalFilename()).uploadedAt(LocalDateTime.now().toString()).filesize(file.getSize()).contentType(file.getContentType()).generateFileName(fileName).build();
+        return FileUploadResponseDTO.builder().storageType("Local").filePath(fileUtil.resolveUserPath()).fileName(file.getOriginalFilename()).uploadedAt(LocalDateTime.now().toString()).filesize(file.getSize()).contentType(file.getContentType()).generateFileName(fileName).build();
 
     }
 }

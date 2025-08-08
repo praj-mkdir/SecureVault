@@ -31,7 +31,6 @@ import java.util.stream.Stream;
 @Slf4j
 public class JwtConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
-//    private static final Logger log = LoggerFactory.getLogger(JwtConverter.class);
     private  final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter;
     private final JwtConverterProperties jwtConverterProperties;
 

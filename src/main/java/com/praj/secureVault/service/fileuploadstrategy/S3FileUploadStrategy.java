@@ -74,33 +74,4 @@ public class S3FileUploadStrategy implements FileUploadStrategy{
                 .build();
 
     }
-
-//    private static byte[] getObjectFile(String filePath) {
-//        FileInputStream fileInputStream = null;
-//        byte[] bytesArray = null;
-//
-//        try {
-//            File file = new File(filePath);
-//            bytesArray = new byte[(int) file.length()];
-//            fileInputStream = new FileInputStream(file);
-//            fileInputStream.read(bytesArray);
-//
-//        } catch (IOException e) {
-//            log.error("An error occurred during a risky operation: {}", e.getMessage(), e);
-//        } finally {
-//            if (fileInputStream != null) {
-//                try {
-//                    fileInputStream.close();
-//                } catch (IOException e) {
-//                    log.error("An error occurred during a risky operation: {}", e.getMessage(), e);
-//                }
-//            }
-//        }
-//
-//        return bytesArray;
-//    }
-
-
-
-
 }
