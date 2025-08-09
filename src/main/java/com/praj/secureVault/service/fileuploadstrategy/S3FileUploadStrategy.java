@@ -71,6 +71,7 @@ public class S3FileUploadStrategy implements FileUploadStrategy{
                 .uploadedAt(LocalDateTime.now().toString())
                 .filesize(file.getSize())
                 .contentType(file.getContentType())
+                .fileID(fileName.substring(0,35))
                 .build();
 
     }

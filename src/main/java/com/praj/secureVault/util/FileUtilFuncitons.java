@@ -1,5 +1,6 @@
 package com.praj.secureVault.util;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -29,9 +30,12 @@ public class FileUtilFuncitons {
     }
 
 
+    public String fileIdGen(){
+        return UUID.randomUUID().toString();
+    }
+
     public String generateStoredFileName(String originalFilename) {
-        String uuid = UUID.randomUUID().toString();
-        return uuid + "_" + StringUtils.cleanPath(originalFilename);
+        return fileIdGen() + "_" + StringUtils.cleanPath(originalFilename);
     }
 
     public String resolveUserPath() {

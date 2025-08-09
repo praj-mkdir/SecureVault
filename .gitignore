@@ -46,3 +46,4 @@ build/
 /terraform/environments/dev/terraform.tfstate.backup
 /terraform/environments/dev/terraform.tfstate
 /terraform/environments/dev/.terraform/
+/file/

@@ -62,8 +62,8 @@ public class S3PresignerService {
             String presignedUrl = presignedRequest.url().toExternalForm();
 
 
-            log.info("Presigned URL to upload a file to: [{}]", myURL);
-            log.info("HTTP method: [{}]", presignedRequest.httpRequest().method());
+//            log.info("Presigned URL to upload a file to: [{}]", myURL);
+//            log.info("HTTP method: [{}]", presignedRequest.httpRequest().method());
             Map<String, Object> result = new HashMap<>();
             result.put("presignedUrl", presignedUrl);
             result.put("key", key);

@@ -39,13 +39,14 @@ public class FileUploadService {
 
       FileUploadResponseDTO response =  strategy.upload(file, principal.getName());
       FileMetadata savedData = saveFileMetadata(response);
-      response.setFileID(savedData.getId());
+//      response.setFileID(string);
       return response;
 
     }
 
     private FileMetadata saveFileMetadata(FileUploadResponseDTO response){
         FileMetadata metadata = FileMetadata.builder()
+                .id(response.getFileID())
                 .fileName(response.getFileName())
                 .size(response.getFilesize())
                 .storagePath(response.getFilePath())

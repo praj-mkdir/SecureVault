@@ -52,7 +52,9 @@ public class LocalFileUploadStrategy implements FileUploadStrategy {
         }
 
         log.info("User '{}' upload file: '{}'", username, fileName);
-        return FileUploadResponseDTO.builder().storageType("Local").filePath(fileUtil.resolveUserPath()).fileName(file.getOriginalFilename()).uploadedAt(LocalDateTime.now().toString()).filesize(file.getSize()).contentType(file.getContentType()).generateFileName(fileName).build();
+        return FileUploadResponseDTO.builder().storageType("Local").filePath(fileUtil.resolveUserPath()).fileName(file.getOriginalFilename())
+                .fileID(fileName.substring(0,36))
+                .uploadedAt(LocalDateTime.now().toString()).filesize(file.getSize()).contentType(file.getContentType()).generateFileName(fileName).build();
 
     }
 }

@@ -19,13 +19,14 @@ public class FileMetadata {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
-    private String id = UUID.randomUUID().toString();
-    @PrePersist
-    public void prePersist() {
-        if (id == null) {
-            id = UUID.randomUUID().toString();
-        }
-    }
+    private String id;
+//    @PrePersist
+//    public void prePersist() {
+//        if (id == null) {
+//            id = UUID.randomUUID().toString();
+//        }
+//    }
+
     private String fileName;
 
     private Long size;
