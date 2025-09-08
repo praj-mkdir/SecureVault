@@ -1,7 +1,7 @@
 output "bucket_name" {
-  value = aws_s3_bucket.app_files.id
+  value = aws_s3_bucket.this.id
 }
 
 output "bucket_arn" {
-  value = aws_s3_bucket.app_files.arn
+  value = aws_s3_bucket.this.arn
 }
