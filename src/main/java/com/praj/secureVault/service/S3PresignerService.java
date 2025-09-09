@@ -15,7 +15,6 @@ import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequ
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
 
 import java.time.Duration;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,12 +57,7 @@ public class S3PresignerService {
             PutObjectRequest objectRequest = PutObjectRequest.builder().bucket(bucketName).metadata(metadata).key(key).build();
             PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder().signatureDuration(Duration.ofMinutes(5)).putObjectRequest(objectRequest).build();
             PresignedPutObjectRequest presignedRequest = s3Presigner.presignPutObject(presignRequest);
-            String myURL = presignedRequest.url().toString();
             String presignedUrl = presignedRequest.url().toExternalForm();
-
-
-//            log.info("Presigned URL to upload a file to: [{}]", myURL);
-//            log.info("HTTP method: [{}]", presignedRequest.httpRequest().method());
             Map<String, Object> result = new HashMap<>();
             result.put("presignedUrl", presignedUrl);
             result.put("key", key);
