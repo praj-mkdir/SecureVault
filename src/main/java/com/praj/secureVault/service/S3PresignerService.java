@@ -1,6 +1,8 @@
 package com.praj.secureVault.service;
 
 
+import com.praj.secureVault.model.FileMetadata;
+import com.praj.secureVault.repository.FileMetaDataRepository;
 import com.praj.secureVault.util.AuthUtil;
 import com.praj.secureVault.util.FileUtilFuncitons;
 import lombok.AllArgsConstructor;
@@ -9,14 +11,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.s3.internal.signing.DefaultS3Presigner;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
+import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignRequest;
+import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -31,10 +37,12 @@ public class S3PresignerService {
 
     private final FileUtilFuncitons fileUtil;
     private final AuthUtil authUtil;
+    private final FileMetaDataRepository repository;
 
-    public S3PresignerService(FileUtilFuncitons fileUtil, AuthUtil authUtil) {
+    public S3PresignerService(FileUtilFuncitons fileUtil, AuthUtil authUtil, FileMetaDataRepository repository) {
         this.fileUtil = fileUtil;
         this.authUtil = authUtil;
+        this.repository = repository;
     }
 
     public Map<String, Object> generatePresignedUploadUrl(String originalFilename) {
@@ -68,6 +76,24 @@ public class S3PresignerService {
             return result;
         }
 
+    }
+
+    public Map<String, Object> generateDownloadPresignedUrl(String fileId){
+        try(S3Presigner presigner = S3Presigner.create()){
+
+            Optional<FileMetadata> metadata =  repository.findById(fileId);
+            String key = metadata.get().getGenerated_FileName();
+            log.info("key - " + key);
+
+            GetObjectRequest objectRequest = GetObjectRequest.builder().bucket(bucketName).key(key).build();
+
+            GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder().signatureDuration(Duration.ofMinutes(5)).getObjectRequest(objectRequest).build();
+            PresignedGetObjectRequest presignedGetObjectRequest = presigner.presignGetObject(presignRequest);
+            log.info("Presigned URL: [{}]", presignedGetObjectRequest.url().toString());
+            log.info("HTTP method: [{}]", presignedGetObjectRequest.httpRequest().method());
+
+            return Map.of("PresginedUrl" , presignedGetObjectRequest.url().toString());
+        }
     }
 
 

@@ -1,6 +1,7 @@
 package com.praj.secureVault.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,5 +11,8 @@ import lombok.Setter;
 public class S3EventRecord {
     // Getter and Setter
     private S3Entity s3;
+
+    @JsonProperty("eventTime")
+    private String eventTime;
 
 }

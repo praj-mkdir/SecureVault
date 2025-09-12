@@ -34,8 +34,7 @@ public class FileUploadService {
     }
 
     public FileUploadResponseDTO uploadFile(MultipartFile file, Principal principal) throws FileEmptyException, IOException, IllegalStorageTypeException {
-//        UploadStorageType type = UploadStorageType.fromString(strategyType);
-//        FileUploadStrategy strategy = factory.getStrategy(type);
+
 
       FileUploadResponseDTO response =  strategy.upload(file, principal.getName());
       FileMetadata savedData = saveFileMetadata(response);
