@@ -15,18 +15,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
+
 public class FileMetadata {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private String id;
-//    @PrePersist
-//    public void prePersist() {
-//        if (id == null) {
-//            id = UUID.randomUUID().toString();
-//        }
-//    }
-
     private String fileName;
 
     private Long size;
@@ -51,5 +45,13 @@ public class FileMetadata {
 
     @Column(name = "generated_FileName")
     private String generated_FileName;
+
+    @Column(name="s3_key")
+    private String s3_Key;
+
+    @Column(name = "status")
+    private String status;
+
+
 }
 

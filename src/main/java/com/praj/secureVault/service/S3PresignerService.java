@@ -1,12 +1,15 @@
 package com.praj.secureVault.service;
 
 
+import com.praj.secureVault.dto.FileUploadResponseDTO;
 import com.praj.secureVault.model.FileMetadata;
 import com.praj.secureVault.repository.FileMetaDataRepository;
 import com.praj.secureVault.util.AuthUtil;
 import com.praj.secureVault.util.FileUtilFuncitons;
+import com.praj.secureVault.util.enums.FileStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
@@ -73,6 +76,22 @@ public class S3PresignerService {
             result.put("httpMethod", presignedRequest.httpRequest().method().toString());
             result.put("expiresIn", Duration.ofMinutes(5).toMinutes() + " minutes");
 
+
+                    FileMetadata metadata1 = FileMetadata.builder()
+                    .id(storedFileName.substring(0,36))
+                    .fileName(storedFileName.substring(37))
+                    .storagePath(key)
+                    .uploadedBy(authUtil.getCurrentUsername())
+                    .uploadedAt(null)
+                    .traceId(MDC.get("traceId"))
+                    .generated_FileName(storedFileName)
+                    .status(String.valueOf(FileStatus.PENDING))
+                    .s3_Key(key)
+                    .build();
+
+
+            log.info("Saving the File pending state " + metadata1.toString()) ;
+            repository.save(metadata1);
             return result;
         }
 
@@ -95,6 +114,8 @@ public class S3PresignerService {
             return Map.of("PresginedUrl" , presignedGetObjectRequest.url().toString());
         }
     }
+
+
 
 
 }

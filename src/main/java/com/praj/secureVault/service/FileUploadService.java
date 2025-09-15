@@ -8,6 +8,7 @@ import com.praj.secureVault.repository.FileMetaDataRepository;
 import com.praj.secureVault.service.fileuploadstrategy.FileUploadStrategy;
 //import com.praj.secureVault.service.fileuploadstrategy.FileUploadStrategyFactory;
 import com.praj.secureVault.util.AuthUtil;
+import com.praj.secureVault.util.enums.FileStatus;
 import com.praj.secureVault.util.enums.UploadStorageType;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -56,7 +57,10 @@ public class FileUploadService {
                 .traceId(MDC.get("traceId"))
                 .contentType(response.getContentType())
                 .generated_FileName(response.getGenerateFileName())
+                .status(String.valueOf(FileStatus.UPLOADED))
+                .s3_Key("Offline")
                 .build();
+
         log.info("Saving the file Metadata ");
         return repository.save(metadata);
 
