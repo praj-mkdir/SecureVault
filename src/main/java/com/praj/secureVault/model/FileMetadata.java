@@ -1,10 +1,7 @@
 package com.praj.secureVault.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -15,7 +12,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-
+@Getter
+@Setter
 public class FileMetadata {
 
     @Id

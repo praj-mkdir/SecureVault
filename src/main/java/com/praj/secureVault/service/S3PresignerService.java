@@ -99,19 +99,33 @@ public class S3PresignerService {
 
     public Map<String, Object> generateDownloadPresignedUrl(String fileId){
         try(S3Presigner presigner = S3Presigner.create()){
+            Optional<FileMetadata> opt = repository.findById(fileId);
 
-            Optional<FileMetadata> metadata =  repository.findById(fileId);
-            String key = metadata.get().getGenerated_FileName();
-            log.info("key - " + key);
+            if (opt.isPresent() && FileStatus.UPLOADED.equals(opt.get().getStatus())) {
+                FileMetadata metadata = opt.get();
+                String key = metadata.getGenerated_FileName();
+                log.info("Key for presigned URL: {}", key);
 
-            GetObjectRequest objectRequest = GetObjectRequest.builder().bucket(bucketName).key(key).build();
+                GetObjectRequest objectRequest = GetObjectRequest.builder()
+                        .bucket(bucketName)
+                        .key(key)
+                        .build();
 
-            GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder().signatureDuration(Duration.ofMinutes(5)).getObjectRequest(objectRequest).build();
-            PresignedGetObjectRequest presignedGetObjectRequest = presigner.presignGetObject(presignRequest);
-            log.info("Presigned URL: [{}]", presignedGetObjectRequest.url().toString());
-            log.info("HTTP method: [{}]", presignedGetObjectRequest.httpRequest().method());
+                GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
+                        .signatureDuration(Duration.ofMinutes(5)) // make configurable
+                        .getObjectRequest(objectRequest)
+                        .build();
 
-            return Map.of("PresginedUrl" , presignedGetObjectRequest.url().toString());
+                PresignedGetObjectRequest presigned = presigner.presignGetObject(presignRequest);
+                log.info("Presigned URL: {}", presigned.url());
+                log.info("HTTP method: {}", presigned.httpRequest().method());
+
+                return Map.of("presignedUrl", presigned.url().toString(),
+                        "httpMethod", presigned.httpRequest().method().name());
+            } else {
+                return Map.of("status", "File is not uploaded yet!");
+            }
+
         }
     }
 
