@@ -84,6 +84,7 @@ springdoc:
 aws:
   accessKey: fake_key
   secretKey: fake_password
+  region: us-east-1
   bucket:
     name: securevaultprajv1
 
