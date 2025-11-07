@@ -56,3 +56,4 @@ A secure, modular backend service built using Java 20+ and Spring Boot for uploa
 
 
 Note: For testing purpose and development purpose all the endpoints are non-restricted.
+"Testing the CI for JUnit "
