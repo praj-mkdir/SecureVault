@@ -22,6 +22,7 @@ jobs:
 
       - name: Build & run unit tests
         env:
+          AWS_REGION: us-east-1
           aws.accessKey: FAKE_KEY
           aws.secretKey: FAKE_SECRET
           aws.region: us-east-1

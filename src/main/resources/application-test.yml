@@ -17,6 +17,12 @@ spring:
           issuer-uri: http://localhost:8080/realms/secureApp
           jwt-set-uri: http://localhost:8080/realms/secureApp/protocol/openid-connect/certs
   #For development purpose, i have increased the access token expiry, please change when going live.
+  main:
+    allow-bean-definition-overriding: true
+  autoconfigure:
+    exclude:
+      - io.awspring.cloud.autoconfigure.s3.S3AutoConfiguration
+      - io.awspring.cloud.autoconfigure.sqs.SqsAutoConfiguration
 
   ##DB configuration
   #  datasource:
