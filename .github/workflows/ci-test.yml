@@ -25,4 +25,5 @@ jobs:
           aws.accessKey: FAKE_KEY
           aws.secretKey: FAKE_SECRET
           aws.region: us-east-1
+          aws.bucket.name: testbucket
         run: ./mvnw -B clean test
